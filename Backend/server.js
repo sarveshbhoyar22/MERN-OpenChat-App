@@ -9,9 +9,10 @@ import messageRoutes from "./routes/messages.routs.js";
 import userRoutes from "./routes/user.routs.js"; 
 
 import connectToMongoDB from "./DB/connectToMongoDb.js";
+import { app, server } from "./socket/socket.js";
 
 
-const app = express();
+
 const port = process.env.PORT || 5000;
 
 app.use(cookieParser()); // to parse the incoming cookies from (req.cookies)
@@ -25,8 +26,10 @@ app.use("/api/users",userRoutes);
 app.get("/",(req,res)=>{
     res.send("Hello World!");
 })
+  console.log("backend")
 
-app.listen(port,()=>{
+server.listen(port,()=>{
     connectToMongoDB();
-    console.log(`server running on port ${port}`)
+    console.log(`server running on port  http://localhost:${port}`)
 })
+  

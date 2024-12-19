@@ -11,6 +11,6 @@ export const getUsersForSideBars = async (req, res) => {
     } catch (error) {
         // console.log("Error in getUsersForSideBars controller", error.message);
         console.error("Error in getUsersForSideBars controller", error.message);
-        res.status(500).json({error:"Inter Server Error In getting user data for sidebars"})
+        res.status(500).json({error:"Internal Server Error In getting user data for sidebars"})
     }
 };

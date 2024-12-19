@@ -37,11 +37,14 @@ export const signup = async (req, res) => {
    
 
     if (newUser) {
-      generateTokensAndSetCookies(newUser._id, res);
+      const tokens = generateTokensAndSetCookies(newUser._id, res);
       await newUser.save();
 
+      console.log(tokens);
       console.log("userCreated");
-      res.status(201).json({
+      res.status(201)
+      .cookie("jwt", tokens, {maxAge:0})
+      .json({
         _id: newUser._id,
         fullName: newUser.fullName,
         email: newUser.email,
@@ -61,20 +64,30 @@ export const signup = async (req, res) => {
 export const login = async (req, res) => {
   try {
     const {userName, password} = req.body;
-
+    // console.log(username) 
     if(!userName || !password){
-        return res.status(400).json({error:"Please fill all the fields"});
+        return res.status(400).json({error:"From Backend: Msg : PLease enter All fields"});
     }
-
+    
     const user = await User.findOne({userName});
+    // console.log(user,":user");
+    if(!user){
+      return res.status(400).json({error:"user not found, signup first"})
+    }
+   
     const isPasswordCorrect = await bcrypt.compare(password, user?.password || "");
     if(!user || !isPasswordCorrect){
       return res.status(400).json({error:"Invalid credentials"})
     }
 
-    generateTokensAndSetCookies(user._id, res);
+    const tokens = generateTokensAndSetCookies(user._id, res);
+    if(!generateTokensAndSetCookies){
+      throw new Error(error.message);
+    }
 
-    res.status(200).json({
+    
+    res.status(200)
+    .json({
       _id: user._id,
       fullName: user.fullName,
       email: user.email,
@@ -86,7 +99,7 @@ export const login = async (req, res) => {
 
   } catch (error) {
     console.log("Error in login controller", error.message);
-    res.status(500).json({error:"Inter Server Error In Login site"})
+    res.status(500).json({error:"Internal Server Error In Login site"})
   }
   
 }; 
