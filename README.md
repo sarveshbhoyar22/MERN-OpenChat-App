@@ -14,6 +14,21 @@ Frontend: React, JavaScript, TailwindCSS, DaisyUi
 Backend: Node.js, Express.js, MongoDB
 Real-time Communication: Socket.IO 
 
+Getting Started:
+
+Clone the repository:
+Bash
+git clone <repository_url>
+
+Install dependencies:
+Bash
+cd CHATAPP
+npm install 
+
+Start the development server:
+Bash
+npm run start 
+
 LoginPage
 ![image](https://github.com/user-attachments/assets/513185b3-526e-4690-a2b9-b1012de8eecb)
 
