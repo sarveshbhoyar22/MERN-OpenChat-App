@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "server": "cd Backend && node server.js",
-    "start":"cd Backend && node server.js",
+    "start":"cd Backend && node server.js && cd Frontend",
     "build":"npm install && cd FrontEnd && npm install && npm run build "
   },
   "author": "",
