@@ -3,12 +3,7 @@ import SideBar from "../../components/sidebar/SideBar";
 import MessageContainer from "../../components/messageContainer/MessageContainer";
 
 const Home = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [isMsgContainerOpen, setIsMsgContainerOpen] = useState(true);
-
-    const toggleSideBar = ()=>{
-      setIsSidebarOpen(!isSidebarOpen);
-    }
+  
   return (
     <>
       <div className="flex flex-col items-start">

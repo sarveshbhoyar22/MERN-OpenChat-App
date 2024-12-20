@@ -18,19 +18,3 @@ function SideBar() {
 export default SideBar
 
 
-/* STARTER CODE FOR THIS PAGE: 
-function SideBar() {
-  return (
-    <div>
-        <SearchInput/>
-        {/* //divider by div /}
-        <div className='divider px-3'></div>
-        <Conversation/>
-        <LogoutButton/>
-    </div>
-  )
-}
-
-export default SideBar
-
-*/
